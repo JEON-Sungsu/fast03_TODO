@@ -1,4 +1,12 @@
 import dayjs from 'dayjs';
+import {
+    getBottomSpace,
+    getStatusBarHeight,
+} from 'react-native-iphone-x-helper';
+
+export const bottomSpace = getBottomSpace();
+export const statusBarHeight = getStatusBarHeight(true);
+export const ITEM_WIDTH = 220;
 
 export const fillEmptyColumns = (columns, start, end) => {
     const filledColumns = columns.slice(0);
@@ -42,4 +50,13 @@ export const getCalendarColumns = (now) => {
 
     const filledColumns = fillEmptyColumns(columns, start, end);
     return filledColumns;
+};
+
+const dayTexts = ['일', '월', '화', '수', '목', '금', '토'];
+export const getDayText = (day) => {
+    return dayTexts[day];
+};
+
+export const getDayColor = (day) => {
+    return day === 0 ? '#e67639' : day === 6 ? '#5872d1' : '#2b2b2b';
 };
